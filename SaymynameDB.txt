@@ -1,0 +1,73 @@
+create database saymyname;
+
+CREATE TABLE saymyname.user (
+id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name varchar(1000) DEFAULT NULL,
+email varchar(1000) DEFAULT NULL,
+password varchar(1000) DEFAULT NULL,
+Address varchar(1000) DEFAULT NULL,
+City varchar(1000) DEFAULT NULL,
+State varchar(100) DEFAULT NULL,
+Country varchar(100),
+zip int,
+phonenumber int
+);
+
+
+CREATE TABLE saymyname.conference (
+id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name varchar(100) DEFAULT NULL,
+startdatetime datetime,
+enddatetime datetime,
+Address varchar(1000) DEFAULT NULL,
+City varchar(1000) DEFAULT NULL,
+State varchar(100) DEFAULT NULL,
+Country varchar(100),
+zip int,
+createdby int(11) UNSIGNED
+);
+
+
+CREATE TABLE saymyname.event (
+id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+description varchar(1000) default null,
+name varchar(100) DEFAULT NULL,
+startdatetime datetime,
+enddatetime datetime,
+Address varchar(1000) DEFAULT NULL,
+City varchar(1000) DEFAULT NULL,
+State varchar(100) DEFAULT NULL,
+Country varchar(100),
+zip int,
+createdby int(11) UNSIGNED
+);
+
+CREATE TABLE saymyname.organization (
+id int(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name varchar(100) DEFAULT NULL,
+description varchar(1000) DEFAULT NULL,
+noofpeople int,
+address varchar(1000),
+City varchar(1000) DEFAULT NULL,
+State varchar(100) DEFAULT NULL,
+Country varchar(100),
+zip int,
+createdby int(11) UNSIGNED
+);
+
+ALTER TABLE saymyname.organization ADD FOREIGN KEY (createdby) REFERENCES saymyname.user(id) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE saymyname.event ADD FOREIGN KEY (createdby) REFERENCES saymyname.user(id) ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE saymyname.conference ADD FOREIGN KEY (createdby) REFERENCES saymyname.user(id) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+insert into saymyname.user(name, email, password, Address, City, State, zip, phonenumber, Country)
+values ('James Smith', 'james.smith@gmail.com', 'abcd123', '3800 W Cooper St', 'Arlington', 'TX', 76010, 6232990317, 'USA' );
+
+insert into saymyname.conference (name, startdatetime, enddatetime, Address, City, State, zip, createdby, Country)
+values ('UTA Career Guide', '2018-04-17 17:30:00', '2018-04-19 10:30:00', '701 S Nedderman Dr', 'Arlington', 'TX', 76019, 1, 'USA');
+
+
+insert into saymyname.event (description, name, startdatetime, enddatetime, Address, City, State, zip, createdby, Country)
+values ('Job fair for UTA students', 'Job Fair - 2018', '2018-02-05 10:30:00', '2018-02-05 17:30:00', '300 W 1st St', 'Arlington', 'TX', 76010, 1, 'USA');
+
+insert into saymyname.organization (name, description, noofpeople, address, City, State, zip, createdby, Country)
+values ('World Health Organization', 'Agency of the United Nations concerned with international public health', 25000, '900 N Rural Rd', 'San Jose', 'CA', 85226, 1, 'USA' );
