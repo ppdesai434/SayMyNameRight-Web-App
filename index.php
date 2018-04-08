@@ -40,7 +40,8 @@
     <?php  if (isset($_SESSION['name'])) : ?>
     	<p>Welcome <strong><?php echo $_SESSION['name']; echo $_SESSION['ID']; ?></strong></p>
 
-      <p><a href="conference.php" style="color: blue;">Create Conference</a></p>
+      <!--<p><a href="conference.php" style="color: blue;">Create Conference</a></p>-->
+      
       <p><a href="myconferences.php" style="color: blue;">My Conferences</a></p>
 
 

@@ -27,8 +27,11 @@
   <link rel="stylesheet" type="text/css" href="register.css">
 </head>
 <body>
+  <p><a href="index.php" style="color: blue;">Homepage</a></p>
+  <p><a href="conference.php" style="color: blue;">Create Conference</a></p>
+  <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
   <div class="header">
-    <h2>Create/Edit Conference</h2>
+    <h2>My Conference</h2>
   </div>
   <?php 
 

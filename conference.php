@@ -20,7 +20,8 @@
 </head>
 <body>
   <div class="header">
-    <h2>Create/Edit Conference</h2>
+    <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+    <h2>Create Conference</h2>
   </div>
   <form method="POST" action="conference.php">
     <?php include('errors.php'); ?>

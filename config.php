@@ -146,7 +146,7 @@ if (isset($_POST['reg_conf'])) {
           VALUES('$Confname', '$startdate', '$enddate' ,'$Address','$City','$State','$Country', '$zip','$createdby')";
     echo $query;
     mysqli_query($db, $query) or die();
-    header('location: index.php');
+    header('location: myconferences.php');
   }
 
 }

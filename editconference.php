@@ -32,6 +32,7 @@ $row = mysqli_fetch_row($result);
 </head>
 <body>
   <div class="header">
+    <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <h2>Edit Conference</h2>
   </div>
   <form method="POST" action="conference.php">
