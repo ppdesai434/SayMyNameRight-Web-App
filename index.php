@@ -8,6 +8,7 @@
   if (isset($_GET['logout'])) {
   	session_destroy();
   	unset($_SESSION['name']);
+    unset($_SESSION['ID']);
   	header("location: login.php");
   }
 ?>
@@ -28,7 +29,7 @@
       <div class="error success" >
       	<h3>
           <?php 
-          	echo $_SESSION['success']; 
+          	echo $_SESSION['success'];
           	unset($_SESSION['success']);
           ?>
       	</h3>
@@ -37,7 +38,12 @@
 
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['name'])) : ?>
-    	<p>Welcome <strong><?php echo $_SESSION['name']; ?></strong></p>
+    	<p>Welcome <strong><?php echo $_SESSION['name']; echo $_SESSION['ID']; ?></strong></p>
+
+      <p><a href="conference.php" style="color: blue;">Create Conference</a></p>
+      <p><a href="myconferences.php" style="color: blue;">My Conferences</a></p>
+
+
     	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
 </div>
