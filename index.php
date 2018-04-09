@@ -44,6 +44,7 @@
       
       <p><a href="myconferences.php" style="color: blue;">My Conferences</a></p>
 	<p><a href="myorganization.php" style="color: blue;">My Organization</a></p>
+	<p><a href="myevents.php" style="color: blue;">My Events</a></p>
 
     	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>

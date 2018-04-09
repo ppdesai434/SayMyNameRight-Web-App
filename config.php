@@ -280,6 +280,100 @@ if (isset($_POST['edit_Org'])) {
 
 }
 
+// Add Event
+if (isset($_POST['reg_event'])) {
+  // receive all input values from the form
+  $eventName = mysqli_real_escape_string($db, $_POST['name']);
+  $eventDesc = mysqli_real_escape_string($db, $_POST['desc']);
+  $startdate = mysqli_real_escape_string($db, $_POST['startdate']);
+  $enddate = mysqli_real_escape_string($db, $_POST['enddate']);
+  $Address = mysqli_real_escape_string($db, $_POST['Address']);
+  $City = mysqli_real_escape_string($db, $_POST['City']);
+  $State = mysqli_real_escape_string($db, $_POST['State']);
+  $Country = mysqli_real_escape_string($db, $_POST['Country']);
+  $zip = mysqli_real_escape_string($db, $_POST['zip']);
+  $createdby = mysqli_real_escape_string($db, $_POST['createdby']);
+
+  if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      array_push($errors, "Only letters and white space allowed");
+    }
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($eventName)) { array_push($errors, "Event name is required"); }
+  if (empty($eventDesc)) { array_push($errors, "Event Decription is required"); }
+  if (empty($startdate)) { array_push($errors, "Start Date is required"); }
+  if (empty($enddate)) { array_push($errors, "End Date is required"); }
+  if (empty($Address)) { array_push($errors, "Address is required"); }
+  if (empty($City)) { array_push($errors, "City is required"); }
+  if (empty($State)) { array_push($errors, "State is required"); }
+  if (empty($Country)) { array_push($errors, "Country is required"); }
+  if (empty($zip)) { array_push($errors, "zip is required"); }
+  if (empty($createdby)) { array_push($errors, "User is required"); }
+
+  // first check the database to make sure 
+  // a user does not already exist with the same username and/or email
+  $user_check_query = "SELECT * FROM user WHERE name='$name' OR email='$email' ";
+  $result = mysqli_query($db, $user_check_query);
+  $user = mysqli_fetch_assoc($result);
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) 
+  {
+    
+
+    $query = "INSERT INTO event (name,description, startdatetime, enddatetime, Address, City, State, Country, zip, createdby) 
+          VALUES('$eventName','$eventDesc', '$startdate', '$enddate' ,'$Address','$City','$State','$Country', '$zip','$createdby')";
+    echo $query;
+    mysqli_query($db, $query) or die();
+    header('location: myevents.php');
+  }
+
+}
+
+if (isset($_POST['edit_event'])) {
+  // receive all input values from the form
+  $identity = mysqli_real_escape_string($db, $_POST['id']);
+  $eventname = mysqli_real_escape_string($db, $_POST['name']);
+  $eventdesc = mysqli_real_escape_string($db, $_POST['desc']);
+  $startdate = mysqli_real_escape_string($db, $_POST['startdate']);
+  $enddate = mysqli_real_escape_string($db, $_POST['enddate']);
+  $Address = mysqli_real_escape_string($db, $_POST['Address']);
+  $City = mysqli_real_escape_string($db, $_POST['City']);
+  $State = mysqli_real_escape_string($db, $_POST['State']);
+  $Country = mysqli_real_escape_string($db, $_POST['Country']);
+  $zip = mysqli_real_escape_string($db, $_POST['zip']);
+  $createdby = mysqli_real_escape_string($db, $_POST['createdby']);
+
+  if (!preg_match("/^[a-zA-Z ]*$/",$name)) {
+      array_push($errors, "Only letters and white space allowed");
+    }
+
+  // form validation: ensure that the form is correctly filled ...
+  // by adding (array_push()) corresponding error unto $errors array
+  if (empty($eventname)) { array_push($errors, "Event name is required"); }
+  if (empty($eventdesc)) { array_push($errors, "Event description is required"); }
+  if (empty($startdate)) { array_push($errors, "Start Date is required"); }
+  if (empty($enddate)) { array_push($errors, "End Date is required"); }
+  if (empty($Address)) { array_push($errors, "Address is required"); }
+  if (empty($City)) { array_push($errors, "City is required"); }
+  if (empty($State)) { array_push($errors, "State is required"); }
+  if (empty($Country)) { array_push($errors, "Country is required"); }
+  if (empty($zip)) { array_push($errors, "zip is required"); }
+  if (empty($createdby)) { array_push($errors, "User is required"); }
+
+  // Finally, register user if there are no errors in the form
+  if (count($errors) == 0) 
+  {
+    
+
+    $query = "Update event set name='$eventname',description='$eventdesc', startdatetime='$startdate', enddatetime='$enddate', Address='$Address', City='$City', State='$State', Country='$Country', zip='$zip' where id = $identity; ";
+    echo $query;
+    mysqli_query($db, $query) or die();
+    header('location: myevents.php');
+  }
+
+}
 ?>
 
 
