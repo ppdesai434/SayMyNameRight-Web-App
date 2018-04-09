@@ -43,7 +43,7 @@
       <!--<p><a href="conference.php" style="color: blue;">Create Conference</a></p>-->
       
       <p><a href="myconferences.php" style="color: blue;">My Conferences</a></p>
-
+	<p><a href="myorganization.php" style="color: blue;">My Organization</a></p>
 
     	<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
     <?php endif ?>
