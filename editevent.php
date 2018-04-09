@@ -31,8 +31,15 @@ $row = mysqli_fetch_row($result);
   </script>
 </head>
 <body>
+<ul>
+  <li><a class="active" href="index.php">Home</a></li>
+  <li><a href="myconferences.php" >My Conferences</a></li>
+  <li><a href="myorganization.php" >My Organization</a></li>
+  <li><a href="myevents.php" >My Events</a></li>
+  <li class="logout"><a href="index.php?logout='1'" >Logout</a></li>
+</ul>
   <div class="header">
-    <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+    
     <h2>Edit Conference</h2>
   </div>
   <form method="POST" action="event.php">
@@ -373,10 +380,7 @@ $row = mysqli_fetch_row($result);
     <div class="input-group">
       <button type="submit" class="btn" name="edit_event">Edit Event</button>
     </div>
-    <p>
-      <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
-      <!--Already a member? <a href="login.php">Sign in</a>-->
-    </p>
+    
   </form>
 </body>
 </html>

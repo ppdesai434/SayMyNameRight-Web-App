@@ -27,12 +27,20 @@
   <link rel="stylesheet" type="text/css" href="register.css">
 </head>
 <body>
-  <p><a href="index.php" style="color: blue;">Homepage</a></p>
-  <p><a href="conference.php" style="color: blue;">Create Conference</a></p>
-  <p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+  <ul>
+  <li><a class="active" href="index.php">Home</a></li>
+  <li><a href="myconferences.php" >My Conferences</a></li>
+  <li><a href="myorganization.php" >My Organization</a></li>
+  <li><a href="myevents.php" >My Events</a></li>
+  <li class="logout"><a href="index.php?logout='1'" >Logout</a></li>
+</ul>
+  
+ 
   <div class="header">
     <h2>My Conference</h2>
+	<p><a href="conference.php" style="color: white;">Create Conference</a></p>
   </div>
+  <div class="content">
   <?php 
 
 
@@ -48,7 +56,7 @@
   while ($row=mysqli_fetch_row($results))
     {
     echo "<tr>";
-    printf ("<td>%s</td> <td>(%s)</td>",$row[0],$row[1]);
+    printf ("<td>%s</td> <td>%s</td>",$row[0],$row[1]);
     echo "<td><a href='editconference.php?id=".$row[0]."'>Edit</a></td>";
     echo "<td><a href='deleteconference.php?id=".$row[0]."'>Delete</a></td>";
     echo "</tr>";
@@ -64,6 +72,6 @@
 
 
   ?>
-  
+  </div>
 </body>
 </html>

@@ -7,10 +7,12 @@
 </head>
 <body>
   <div class="header">
-  	<h2>Login</h2>
+	<h2>Say My Name Right!</h2>
+  	
   </div>
 	 
   <form method="post" action="login.php">
+  <h3>Login</h3>
   	<?php include('errors.php'); ?>
   	<div class="input-group">
   		<label>Name</label>
