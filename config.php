@@ -11,7 +11,6 @@
     unset($_SESSION['ID']);
   	header("location: login.php");
   }
-}
 
 // Add Organization
 if (isset($_POST['reg_org'])) {
